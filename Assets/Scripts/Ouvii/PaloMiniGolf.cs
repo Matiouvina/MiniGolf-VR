@@ -3,19 +3,22 @@ using UnityEngine;
 public class PaloMiniGolf : MonoBehaviour
 {
     public float fuerza = 10f;
-    private Rigidbody rbPalo;
+    
+    private Vector3 posicionAnterior;
+    private float velocidadActualPalo;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rbPalo = GetComponent<Rigidbody>();
+        posicionAnterior = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        Vector3 desplazamiento = transform.position - posicionAnterior;
+        velocidadActualPalo = desplazamiento.magnitude / Time.deltaTime;
+        posicionAnterior = transform.position;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Pelota"))
@@ -24,11 +27,12 @@ public class PaloMiniGolf : MonoBehaviour
             
             if (rbPelota != null)
             {
-                Vector3 direccion = new Vector3(transform.forward.x, 0f, transform.forward.z).normalized;
+                Vector3 direccionImpacto = other.transform.position - transform.position;
+                Vector3 direccionFisica = new Vector3(direccionImpacto.x, 0f, direccionImpacto.z).normalized;
 
-                float velocidadMando = rbPalo.linearVelocity.magnitude;
+                float fuerzaFinal = velocidadActualPalo * fuerza;
 
-                rbPelota.linearVelocity = direccion * (velocidadMando * fuerza);
+                rbPelota.linearVelocity = direccionFisica * fuerzaFinal;
             }
         }
     }
