@@ -326,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b454947f9d24be848921f658aa7483bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.025
+      value: 11.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b454947f9d24be848921f658aa7483bd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -334,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b454947f9d24be848921f658aa7483bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.37999988
+      value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b454947f9d24be848921f658aa7483bd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -420,7 +420,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 049d7b5ec1d7d4b45af4d0b9b16af2e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.055
+      value: 10.804
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 049d7b5ec1d7d4b45af4d0b9b16af2e9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 049d7b5ec1d7d4b45af4d0b9b16af2e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.38
+      value: -1.4000001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 049d7b5ec1d7d4b45af4d0b9b16af2e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -924,6 +924,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 247d0dbe6f0976540ab952899060d656, type: 3}
       propertyPath: m_Name
       value: "CanchaTama\xF1oBien(espero)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 247d0dbe6f0976540ab952899060d656, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1631,6 +1635,10 @@ PrefabInstance:
     - target: {fileID: 4297913880742244628, guid: 4f4dcee854b4db64a81285edd46ed891, type: 3}
       propertyPath: m_Name
       value: SISTEMA_INTERFAZ_NEON
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297913880742244628, guid: 4f4dcee854b4db64a81285edd46ed891, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4459606124666595668, guid: 4f4dcee854b4db64a81285edd46ed891, type: 3}
       propertyPath: m_CullTransparentMesh
