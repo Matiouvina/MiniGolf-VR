@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5121706932505053472
+--- !u!1 &8663660125744649834
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6063924779088469880}
-  - component: {fileID: 4188373066737278705}
-  - component: {fileID: 1361132697224020418}
-  - component: {fileID: 4906515591347562570}
+  - component: {fileID: 8786646525191153644}
+  - component: {fileID: 2371149402532580128}
+  - component: {fileID: 7916248961010429740}
+  - component: {fileID: 721296278087342543}
+  - component: {fileID: 4410794658827218778}
   m_Layer: 0
-  m_Name: Icosphere (1)
+  m_Name: Icosphere (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6063924779088469880
+--- !u!4 &8786646525191153644
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121706932505053472}
+  m_GameObject: {fileID: 8663660125744649834}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: -0, z: 0, w: -0.0000000754979}
-  m_LocalPosition: {x: -2.1184878, y: 0.407004, z: 0.23880912}
-  m_LocalScale: {x: 0.0000048747593, y: 0.000004837123, z: 0.0000048655825}
+  m_LocalPosition: {x: -6.285, y: 1.069, z: 0.71}
+  m_LocalScale: {x: 0.00004132023, y: 0.00004100121, z: 0.00004124244}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4188373066737278705
+--- !u!33 &2371149402532580128
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121706932505053472}
+  m_GameObject: {fileID: 8663660125744649834}
   m_Mesh: {fileID: 289301614986012343, guid: 3188db7b03b46c24c99229935dbb46f3, type: 3}
---- !u!23 &1361132697224020418
+--- !u!23 &7916248961010429740
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121706932505053472}
+  m_GameObject: {fileID: 8663660125744649834}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -91,22 +92,46 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4906515591347562570
+--- !u!114 &721296278087342543
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5121706932505053472}
+  m_GameObject: {fileID: 8663660125744649834}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9e60879fa1ae764c91947c243f9a701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DetectorHoyo
   pantallaGanaste: {fileID: 0}
+  pantallaDerrota: {fileID: 0}
   golpesFinalText: {fileID: 0}
   tiempoFinalText: {fileID: 0}
   contadorGolpes: {fileID: 0}
   golpesText: {fileID: 0}
   contadorTiempo: {fileID: 0}
   tiempoText: {fileID: 0}
+  golpesMaximos: 30
+  tiempoMaximoSegundos: 90
+--- !u!135 &4410794658827218778
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8663660125744649834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 9303.051
+  m_Center: {x: 0, y: 0, z: 0}
