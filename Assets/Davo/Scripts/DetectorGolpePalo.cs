@@ -1,17 +1,22 @@
 using UnityEngine;
 
-public class DetectorGolpePalo : MonoBehaviour
+public class ContadorGolpePalo : MonoBehaviour
 {
+    [Header("Conexión con el Cerebro")]
+    public LogicaContador logicaContador; // Casilla para arrastrar el objeto LogicaContador
+
     private void OnCollisionEnter(Collision collision)
     {
-        // Si chocamos contra la pelota...
-        if (collision.gameObject.name.ToLower().Contains("pelota"))
+        // Revisa si el palo chocó físicamente contra la pelota blanca
+        if (collision.gameObject.name.ToLower().Contains("pelota") || collision.gameObject.CompareTag("Player"))
         {
-            // Buscamos tu script del marcador y sumamos el golpe
-            LogicaContador contador = FindObjectOfType<LogicaContador>();
-            if (contador != null)
+            if (logicaContador != null)
             {
-                contador.SumarGolpe();
+                logicaContador.SumarGolpe(); // Le da el aviso a la lógica
+            }
+            else
+            {
+                Debug.LogError("ERROR: Te falta arrastrar el objeto LogicaContador a la casilla del palo.");
             }
         }
     }
