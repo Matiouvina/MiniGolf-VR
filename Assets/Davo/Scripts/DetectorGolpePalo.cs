@@ -3,20 +3,53 @@ using UnityEngine;
 public class ContadorGolpePalo : MonoBehaviour
 {
     [Header("Conexión con el Cerebro")]
-    public LogicaContador logicaContador; // Casilla para arrastrar el objeto LogicaContador
+    public LogicaContador logicaContador;
 
+    [Header("Ajustes de Detección")]
+    public float tiempoEntreGolpes = 0.6f; // Sube un poquito esto para que un roce suave no cuente doble
+    private float ultimoGolpe = -10f;
+
+    // Detecta golpe fuerte o normal
     private void OnCollisionEnter(Collision collision)
     {
-        // Revisa si el palo chocó físicamente contra la pelota blanca
-        if (collision.gameObject.name.ToLower().Contains("pelota") || collision.gameObject.CompareTag("Player"))
+        VerificarYContar(collision.gameObject);
+    }
+
+    // Detecta roce suave o empujón lento en VR
+    private void OnCollisionStay(Collision collision)
+    {
+        VerificarYContar(collision.gameObject);
+    }
+
+    // Detecta si el palo entra suave en modo Trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        VerificarYContar(other.gameObject);
+    }
+
+    // Detecta si el palo roza suavemente en modo Trigger
+    private void OnTriggerStay(Collider other)
+    {
+        VerificarYContar(other.gameObject);
+    }
+
+    private void VerificarYContar(GameObject objetoTocado)
+    {
+        Transform raiz = objetoTocado.transform.root;
+        bool esPelota = objetoTocado.name.ToLower().Contains("pelota") || 
+                        raiz.name.ToLower().Contains("pelota") ||
+                        objetoTocado.CompareTag("Player") || 
+                        raiz.CompareTag("Player");
+
+        if (esPelota)
         {
-            if (logicaContador != null)
+            if (Time.time - ultimoGolpe >= tiempoEntreGolpes)
             {
-                logicaContador.SumarGolpe(); // Le da el aviso a la lógica
-            }
-            else
-            {
-                Debug.LogError("ERROR: Te falta arrastrar el objeto LogicaContador a la casilla del palo.");
+                if (logicaContador != null)
+                {
+                    ultimoGolpe = Time.time;
+                    logicaContador.SumarGolpe();
+                }
             }
         }
     }
