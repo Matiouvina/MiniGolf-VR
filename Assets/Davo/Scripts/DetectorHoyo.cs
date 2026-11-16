@@ -20,6 +20,11 @@ public class DetectorHoyo : MonoBehaviour
     public int golpesMaximos = 30; // Podés cambiar este número en el Inspector
     public float tiempoMaximoSegundos = 90f; // 1:30 minutos = 90 segundos
 
+    [Header("Botones de Fin de Nivel")]
+    public GameObject menu;
+    public GameObject reiniciar;
+    public GameObject siguiente;
+
     private bool juegoTerminado = false;
     private float tiempoActual = 0f;
 
@@ -66,7 +71,6 @@ public class DetectorHoyo : MonoBehaviour
         }
     }
 
-    // DETECTOR FÍSICO REAL DEL HOYO (RECORDÁ MARCAR EL "IS TRIGGER" EN EL COLLIDER)
     private void OnTriggerEnter(Collider other)
     {
         if (juegoTerminado) return;
@@ -106,9 +110,10 @@ public class DetectorHoyo : MonoBehaviour
         {
             pantallaDerrota.SetActive(true);
         }
+
+        // Prende las tres imágenes/botones al final
+        if (menu != null) menu.SetActive(true);
+        if (reiniciar != null) reiniciar.SetActive(true);
+        if (siguiente != null) siguiente.SetActive(true);
     }
 }
-
-
-
-
