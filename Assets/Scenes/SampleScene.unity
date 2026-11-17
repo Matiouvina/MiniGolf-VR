@@ -2322,6 +2322,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6568011050866490052}
     - target: {fileID: 721296278087342543, guid: 2323df6cb649a8644b78141d6ba0b455, type: 3}
+      propertyPath: golpesMaximos
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 721296278087342543, guid: 2323df6cb649a8644b78141d6ba0b455, type: 3}
       propertyPath: contadorGolpes
       value: 
       objectReference: {fileID: 4245102153959520767}
@@ -2345,6 +2349,10 @@ PrefabInstance:
       propertyPath: tiempoFinalText
       value: 
       objectReference: {fileID: 4258057136779434043}
+    - target: {fileID: 721296278087342543, guid: 2323df6cb649a8644b78141d6ba0b455, type: 3}
+      propertyPath: tiempoMaximoSegundos
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8663660125744649834, guid: 2323df6cb649a8644b78141d6ba0b455, type: 3}
       propertyPath: m_Name
       value: Icosphere (1)
