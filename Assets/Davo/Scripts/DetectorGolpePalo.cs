@@ -5,52 +5,56 @@ public class ContadorGolpePalo : MonoBehaviour
     [Header("Conexión con el Cerebro")]
     public LogicaContador logicaContador;
 
-    [Header("Ajustes de Detección")]
-    public float tiempoEntreGolpes = 0.6f; // Sube un poquito esto para que un roce suave no cuente doble
+    [Header("Arrastrá acá tu Pelota")]
+    public Rigidbody rbPelota;
+
+    [Header("Ajustes de Golpe")]
+    public float saltoDeVelocidad = 0.25f; // Cuánto tiene que acelerar de golpe para contar como palazo
+    public float tiempoEntreGolpes = 0.7f; // Tiempo mínimo entre un golpe y otro
+
+    private float velocidadAnterior = 0f;
     private float ultimoGolpe = -10f;
+    private float tiempoInicio;
 
-    // Detecta golpe fuerte o normal
-    private void OnCollisionEnter(Collision collision)
+    void Start()
     {
-        VerificarYContar(collision.gameObject);
+        tiempoInicio = Time.time;
+
+        if (rbPelota == null)
+        {
+            GameObject obj = GameObject.FindWithTag("Player");
+            if (obj == null) obj = GameObject.Find("Pelota");
+            if (obj != null) rbPelota = obj.GetComponent<Rigidbody>();
+        }
     }
 
-    // Detecta roce suave o empujón lento en VR
-    private void OnCollisionStay(Collision collision)
+    void Update()
     {
-        VerificarYContar(collision.gameObject);
-    }
+        if (rbPelota == null || logicaContador == null) return;
 
-    // Detecta si el palo entra suave en modo Trigger
-    private void OnTriggerEnter(Collider other)
-    {
-        VerificarYContar(other.gameObject);
-    }
+        // Ignora los primeros 1.2 segundos mientras la pelota cae al pasto al iniciar
+        if (Time.time - tiempoInicio < 1.2f)
+        {
+            velocidadAnterior = rbPelota.linearVelocity.magnitude;
+            return;
+        }
 
-    // Detecta si el palo roza suavemente en modo Trigger
-    private void OnTriggerStay(Collider other)
-    {
-        VerificarYContar(other.gameObject);
-    }
+        float velocidadActual = rbPelota.linearVelocity.magnitude;
 
-    private void VerificarYContar(GameObject objetoTocado)
-    {
-        Transform raiz = objetoTocado.transform.root;
-        bool esPelota = objetoTocado.name.ToLower().Contains("pelota") || 
-                        raiz.name.ToLower().Contains("pelota") ||
-                        objetoTocado.CompareTag("Player") || 
-                        raiz.CompareTag("Player");
+        // Calcula cuánto aceleró la pelota en este instante (detecta el impacto aunque no haya frenado del todo)
+        float aceleracionRepentina = velocidadActual - velocidadAnterior;
 
-        if (esPelota)
+        if (aceleracionRepentina >= saltoDeVelocidad)
         {
             if (Time.time - ultimoGolpe >= tiempoEntreGolpes)
             {
-                if (logicaContador != null)
-                {
-                    ultimoGolpe = Time.time;
-                    logicaContador.SumarGolpe();
-                }
+                ultimoGolpe = Time.time;
+                logicaContador.SumarGolpe();
+                Debug.Log("¡GOLPE REAL DETECTADO! Aceleración: " + aceleracionRepentina);
             }
         }
+
+        // Guarda la velocidad para compararla en el siguiente frame
+        velocidadAnterior = velocidadActual;
     }
 }
